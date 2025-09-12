@@ -10,45 +10,79 @@ main =
 
 add : Int -> Int -> Int
 add a b =
-    a + b
+    if b == 0
+    a
+    else
+    add (a+1) (b-1)
 
 
 multiply : Int -> Int -> Int
 multiply a b =
-    a * b
+    if b == 0 then
+        0
+    else
+        add a (multiply a (b - 1))
 
 
 -- Ejercicio 1: Función Potencia
 power : Int -> Int -> Int
 power a b =
-    -- TODO: Implementar función potencia
-    0
+    if b == 0 then
+        a
+    else 
+        multiply a (power (a) (b-1))
 
 
 -- Ejercicio 2: Factorial
 factorial : Int -> Int
 factorial n =
-    -- TODO: Implementar factorial
-    0
+    if n == 1 then
+        n
+    else
+        multiply (n) (factorial (n - 1))
+
 
 
 -- Ejercicio 3: Fibonacci
 fibonacciExponential : Int -> Int
 fibonacciExponential n =
-    -- TODO: Implementar fibonacci exponencial
-    0
+    if n == 0 then
+        0
+    else if n == 1 then
+        1
+    else
+    add(fibonacciExponential(n-1) fibonacciExponential(n-2)) 
+
+{-
+
+fibonacciLinear (5)
+
+n acc1 acc 2
+5   0   1
+
+4   1   1
+
+3   1   2
+
+2   2   3
+
+1   5   3
+
+0   7   5
+
+-}
 
 
 fibonacciLinear : Int -> Int
 fibonacciLinear n =
-    -- TODO: Implementar fibonacci lineal con acumuladores
-    0
-
+    fibonacciHelper n 0 1
 
 fibonacciHelper : Int -> Int -> Int -> Int
 fibonacciHelper n acc1 acc2 =
-    -- TODO: Función auxiliar para fibonacci lineal
-    0
+    if n == 0 then
+        acc1
+    else 
+        fibonacciHelper n-1 acc2 add(acc1 acc2)
 
 
 -- Ejercicio 4: Triángulo de Pascal
